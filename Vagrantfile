@@ -39,5 +39,6 @@ Vagrant.configure("2") do |config|
     end
     runner.vm.hostname = "orc-runner.test"
     runner.vm.network "private_network", ip: "192.168.50.5"
+    runner.vm.provision "shell", path: "bootstrap.sh"
   end
 end
