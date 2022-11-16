@@ -1,0 +1,23 @@
+# application servers
+[app]
+192.168.50.2
+192.168.50.3
+
+# database server
+[db]
+192.168.50.4
+
+# runner server
+[runner]
+192.168.50.5
+
+# group of all the servers
+[multi:chidren]
+app
+db
+runner
+
+# variables for all the servers
+[multi:vars]
+ansible_ssh_user=vagrant
+ansible_ssh_private_key_file=/vagrant/
