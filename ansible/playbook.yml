@@ -1,6 +1,7 @@
 ---
-- name: Install Apache
-  host: all
+- name: Install Apache.
+  hosts: all
+  become: true
 
   tasks:
     - name: Install Apache.
@@ -9,6 +10,7 @@
           - httpd
           - httpd-devel
         state: present
+        update_cache: yes
 
     - name: Copy configuration files.
       copy:
@@ -19,12 +21,12 @@
         mode: 0644
       with_items:
         - src: httpd.conf
-        - dest: /etc/httpd/conf/httpd.conf
+          dest: /etc/httpd/conf/httpd.conf
         - src: httpd-vhosts.conf
-        - dest: /etc/httpd/conf/httpd-vhosts.conf
+          dest: /etc/httpd/conf/httpd-vhosts.conf
 
     - name: Make sure Apache is started now and at boot.
-      service:
+      systend:
         name: httpd
         state: started
-        enable: yes
+        enable: true
