@@ -10,7 +10,6 @@
           - httpd
           - httpd-devel
         state: present
-        update_cache: yes
 
     - name: Copy configuration files.
       copy:
@@ -26,7 +25,7 @@
           dest: /etc/httpd/conf/httpd-vhosts.conf
 
     - name: Make sure Apache is started now and at boot.
-      systend:
+      systemd:
         name: httpd
         state: started
-        enable: true
+        enabled: true
