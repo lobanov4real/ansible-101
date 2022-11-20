@@ -41,12 +41,11 @@
         -p 8983
         creates={{ solr_dir }}/bin/solr
 
-    - name: Ensure Solr is started and enabled at boot.
-      service: name=solr state=started enabled=yes
-
     - name: Ensure Solr have access from public ips.
       ansible.builtin.lineinfile:
         path: /etc/default/solr.in.sh
         line: SOLR_JETTY_HOST="0.0.0.0"
         create: yes
-        notify: restart solr
+
+    - name: Ensure Solr is started and enabled at boot.
+      service: name=solr state=restarted enabled=yes
