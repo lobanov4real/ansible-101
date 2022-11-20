@@ -10,7 +10,7 @@
       apt: update_cache=true cache_valid_time=3600
 
   handlers:
-    - name: Restart Solr.
+    - name: restart solr
       service: name=solr state=restarted
 
   tasks:
@@ -43,3 +43,10 @@
 
     - name: Ensure Solr is started and enabled at boot.
       service: name=solr state=started enabled=yes
+
+    - name: Ensure Solr have access from public ips.
+      ansible.builtin.lineinfile:
+        path: /etc/default/solr.in.sh
+        line: SOLR_JETTY_HOST="0.0.0.0"
+        create: yes
+        notify: restart solr
