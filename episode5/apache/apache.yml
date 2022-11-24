@@ -10,6 +10,7 @@
         state: present
 
     - name: Ensure Apache is running and starts at boot
-      service:
+      systemd:
         name: httpd
         state: started
+        enable: true
