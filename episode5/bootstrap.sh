@@ -8,3 +8,4 @@ python3 -m pip install --upgrade pip --no-warn-script-location
 python3 -m pip install --ignore-installed PyYAML molecule ansible-core --no-warn-script-location
 ansible --version
 python3 -m molecule --version
+chsh -s $(which fish)
