@@ -12,3 +12,4 @@ git clone https://github.com/lobanov4real/ansible-101
 cd ansible-101/episode4/
 export ANSIBLE_HOST_KEY_CHECKING=False
 ansible-playbook -i inventory solr.yml
+chsh -s $(which fish)
