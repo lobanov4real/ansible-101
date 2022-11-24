@@ -1,12 +1,12 @@
 [centos]
-192.168.40.3
+172.16.0.3
 
 [centos:vars]
 ansible_user=vagrant
 ansible_ssh_private_key_file=insecure_private_key
 
 [ubuntu]
-192.168.40.2
+172.16.0.2
 
 [ubuntu:vars]
 ansible_user=vagrant
