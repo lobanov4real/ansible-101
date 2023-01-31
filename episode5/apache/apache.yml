@@ -20,6 +20,9 @@
         src: ./test.conf
         dest: /etc/httpd/conf.d/test.conf
       notify: restart apache 
+    
+    - name: Make sure handlers are flushed immediatly.
+      meta: flush_handlers
 
     - name: Ensure Apache is running and starts at boot
       systemd:
