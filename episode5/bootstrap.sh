@@ -9,3 +9,4 @@ python3 -m pip install --ignore-installed PyYAML molecule ansible-core --no-warn
 ansible --version
 python3 -m molecule --version
 chsh -s $(which fish)
+git clone https://github.com/lobanov4real/ansible-101
