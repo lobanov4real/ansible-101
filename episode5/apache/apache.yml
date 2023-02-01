@@ -15,7 +15,7 @@
         dest: "~/.bash_profile"
         regexp: '^ENV_VAR=  '
         line: 'ENV_VAR=value'
-        become: false
+      become: false
     
     - name: Ensure Apache is installed.
       yum:
