@@ -9,8 +9,13 @@
         name: httpd
         state: restarted
 
-
   tasks:
+    - name: Add an environment variable to the remote user's shell.
+      lineinfile: 
+        dest: "~/.bash_profile"
+        regexp: '^ENV_VAR=  '
+        line: 'ENV_VAR=value'
+    
     - name: Ensure Apache is installed.
       yum:
         name: httpd
