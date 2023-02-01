@@ -14,6 +14,7 @@
         state: restarted
 
   pre_tasks:
+    - debug: var=ansible_os_family
     - name: Load variable files.
       include_vars: "{{ item }}"
       with_first_found:
