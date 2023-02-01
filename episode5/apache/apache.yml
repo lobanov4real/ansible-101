@@ -3,21 +3,20 @@
   hosts: centos
   become: true
 
+  vars:
+    apache_package: httpd
+    apache_service: httpd
+
   handlers:
     - name: restart apache
       service:
-        name: httpd
+        name: "{{ apache_service }}"
         state: restarted
 
   tasks:
-    - name: Download a file.
-      get_url:
-        url: http://ipv4.download.thinkbroadband.com/20MB.zip
-        dest: /tmp
-   
     - name: Ensure Apache is installed.
       yum:
-        name: httpd
+        name: "{{ apache_package }}"
         state: present
 
     - name: Copy test config file.
@@ -30,7 +29,7 @@
       meta: flush_handlers
 
     - name: Ensure Apache is running and starts at boot
-      systemd:
-        name: httpd
+      service:
+        name: "{{ apache_service }}" 
         state: started
         enabled: true
