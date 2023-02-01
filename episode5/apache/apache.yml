@@ -12,10 +12,9 @@
   tasks:
     - name: Add an environment variable to the remote user's shell.
       lineinfile: 
-        dest: "~/.bash_profile"
+        dest: "/etc/environment"
         regexp: '^ENV_VAR=  '
         line: 'ENV_VAR=value'
-      become: false
 
     - name: Get the value of an environment variable.
       shell: 'source ~/.bash_profile && echo $ENV_VAR'
