@@ -3,11 +3,9 @@
   hosts: ubuntu
   become: true
 
-  vars:
-    apache_package: httpd
-    apache_service: httpd
-    apache_package_ubuntu: apache2
-    apache_service_ubuntu: apache2
+  vars_files:
+    - "vars/apache_default.yml"
+    - "vars/apache_{{ ansible_os_family }}.yml"
 
   handlers:
     - name: restart apache
