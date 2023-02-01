@@ -17,7 +17,7 @@
 
   tasks:
     - name: Ensure Apache is installed.
-      yum:
+      apt:
         name: "{{ apache_package_ubuntu }}"
         state: present
 
