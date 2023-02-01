@@ -1,6 +1,6 @@
 ---
 - name: Install Apache.
-  hosts: ubuntu
+  hosts: centos 
   become: true
 
   vars_files:
