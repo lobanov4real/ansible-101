@@ -8,6 +8,7 @@
       service:
         name: httpd
         state: restarted
+      notify: restart memcached 
 
     - name: restart memcached
       service:
@@ -24,9 +25,7 @@
       copy:
         src: ./test.conf
         dest: /etc/httpd/conf.d/test.conf
-      notify:
-        - restart apache
-        - restart memcached
+      notify: restart apache
     
     - name: Make sure handlers are flushed immediatly.
       meta: flush_handlers
