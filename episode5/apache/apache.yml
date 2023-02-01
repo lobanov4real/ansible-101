@@ -9,6 +9,11 @@
         name: httpd
         state: restarted
 
+    - name: restart memcached
+      service:
+        name: memcached
+        state: restarted
+
   tasks:
     - name: Ensure Apache is installed.
       yum:
@@ -19,7 +24,9 @@
       copy:
         src: ./test.conf
         dest: /etc/httpd/conf.d/test.conf
-      notify: restart apache 
+      notify:
+        - restart apache
+        - restart memcached
     
     - name: Make sure handlers are flushed immediatly.
       meta: flush_handlers
