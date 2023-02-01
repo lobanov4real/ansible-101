@@ -17,7 +17,7 @@
 
   tasks:
     - name: Ensure Apache is installed.
-      apt:
+      service:
         name: "{{ apache_package_ubuntu }}"
         state: present
 
