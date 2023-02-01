@@ -3,15 +3,22 @@
   hosts: centos 
   become: true
 
-  vars_files:
-    - "vars/apache_default.yml"
-    - "vars/apache_{{ ansible_os_family }}.yml"
+  # vars_files:
+  #   - "vars/apache_default.yml"
+  #   - "vars/apache_{{ ansible_os_family }}.yml"
 
   handlers:
     - name: restart apache
       service:
         name: "{{ apache_service_ubuntu }}"
         state: restarted
+
+  pre_tasks:
+    - name: Load variable files.
+      include_vars: "{{ item }}"
+      with_first_found:
+        - "vars/apache_default.yml"
+        - "vars/apache_{{ ansible_os_family }}.yml"
 
   tasks:
     - name: Ensure Apache is installed.
