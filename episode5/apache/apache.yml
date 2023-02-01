@@ -8,12 +8,7 @@
       service:
         name: httpd
         state: restarted
-      notify: restart memcached 
 
-    - name: restart memcached
-      service:
-        name: memcached
-        state: restarted
 
   tasks:
     - name: Ensure Apache is installed.
