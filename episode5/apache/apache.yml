@@ -18,8 +18,8 @@
     - name: Load variable files.
       include_vars: "{{ item }}"
       with_first_found:
-        - "vars/apache_default.yml"
         - "vars/apache_{{ ansible_os_family }}.yml"
+        - "vars/apache_default.yml"
 
   tasks:
     - name: Ensure Apache is installed.
