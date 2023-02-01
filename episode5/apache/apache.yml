@@ -6,17 +6,19 @@
   vars:
     apache_package: httpd
     apache_service: httpd
+    apache_package_ubuntu: apache2
+    apache_service_ubuntu: apache2
 
   handlers:
     - name: restart apache
       service:
-        name: "{{ apache_service }}"
+        name: "{{ apache_service_ubuntu }}"
         state: restarted
 
   tasks:
     - name: Ensure Apache is installed.
       yum:
-        name: "{{ apache_package }}"
+        name: "{{ apache_package_ubuntu }}"
         state: present
 
     - name: Copy test config file.
@@ -30,6 +32,6 @@
 
     - name: Ensure Apache is running and starts at boot
       service:
-        name: "{{ apache_service }}" 
+        name: "{{ apache_service_ubuntu }}" 
         state: started
         enabled: true
