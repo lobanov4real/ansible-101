@@ -22,6 +22,9 @@
       package:
         name: "{{ apache_package }}"
         state: present
+      register: foo
+
+    - debug: var=foo
 
     - name: Copy test config file.
       copy:
