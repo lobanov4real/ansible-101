@@ -2,11 +2,7 @@
 - name: Install Apache.
   hosts: centos 
   become: true
-
-  # vars_files:
-  #   - "vars/apache_default.yml"
-  #   - "vars/apache_{{ ansible_os_family }}.yml"
-
+  
   handlers:
     - name: restart apache
       service:
