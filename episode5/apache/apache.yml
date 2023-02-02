@@ -1,6 +1,6 @@
 ---
 - name: Install Apache.
-  hosts: all
+  hosts: centos
   become: true
   
   handlers:
