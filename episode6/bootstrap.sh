@@ -10,3 +10,5 @@ ansible --version
 python3 -m molecule --version
 chsh -s $(which fish)
 git clone https://github.com/lobanov4real/ansible-101
+curl -sS https://starship.rs/install.sh | sh
+reboot
