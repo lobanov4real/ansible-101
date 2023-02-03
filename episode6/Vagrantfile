@@ -1,0 +1,37 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "geerlingguy/ubuntu2004"
+
+  config.ssh.insert_key = false
+  
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = 512
+    vb.cpus = "1"
+    vb.linked_clone = true
+  end
+
+  # ubuntu server
+  config.vm.define "ubuntu" do |ubuntu|
+    ubuntu.vm.hostname = "ubuntu.test"
+    ubuntu.vm.network "private_network", ip: "172.16.0.2"
+  end
+
+  # centos server
+  config.vm.define "centos" do |centos|
+    centos.vm.box = "geerlingguy/centos7"
+    centos.vm.hostname = "centos.test"
+    centos.vm.network "private_network", ip: "172.16.0.3"
+    centos.vm.provider "virtualbox" do |vb|
+      vb.memory = 256
+    end
+  end
+
+  # ansible runner
+  config.vm.define "runner" do |runner|
+    runner.vm.hostname = "runner.test"
+    runner.vm.network "private_network", ip: "172.16.0.4"
+    runner.vm.provision "shell", path: "bootstrap.sh"
+  end
+end
