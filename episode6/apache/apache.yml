@@ -4,11 +4,7 @@
   become: true
   
   handlers:
-    # This task can be an include!
-    - name: restart apache
-      service:
-        name: "{{ apache_service }}"
-        state: restarted
+    - import_tasks: handlers/apache.yml
 
   pre_tasks:
     - debug: var=ansible_os_family
@@ -17,6 +13,8 @@
       with_first_found:
         - "vars/apache_{{ ansible_os_family }}.yml"
         - "vars/apache_default.yml"
+    - name: update cache
+      apt: update_cache=yes upgrade=dist
 
   tasks:
     # This tasks can be an include!
