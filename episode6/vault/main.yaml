@@ -12,6 +12,10 @@
       environment:
         API_KEY: "{{ myapp_api_key }}"
       register: echo_result
+      tags:
+        - api 
+        - echo
 
     - name: Show the result.
       debug: var=echo_result.stdout
+
