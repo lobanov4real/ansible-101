@@ -1,0 +1,6 @@
+[centos]
+172.16.0.2
+
+[centos:vars]
+ansible_user=vagrant
+ansible_ssh_pass=vagrant
