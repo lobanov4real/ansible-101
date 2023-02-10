@@ -5,30 +5,24 @@
   vars:
     node_apps_location: /usr/local/opt/node
 
+  roles:
+    - nodejs
+
   tasks:
-    - name: Install EPEL repo.
-      dnf:
-        name: epel-release
-        state: latest
+    - name: Ensure Node.js app folder exists.
+      file: "path={{ node_apps_location }} state=directory"
 
-    - name: Ensure firewalld is stopped (since this is a test server).
-      service:
-        name: firewalld
-        state: stopped
+    - name: Copy example Node.js app to server.
+      copy: "src=app dest={{ node_apps_location }}"
 
-    - name: Install node.js and npm.
-      package:
-        name: npm
-        state: present
-        enablerepo: epel
+    - name: Install app dependencies defined in package.json.
+      npm: "path={{ node_apps_location }}/app"
 
-    - name: Install Forever (to run our Node.js app).
-      community.general.npm:
-        name: forever
-        global: yes
-        state: present
+    - name: Check list of running Node.js apps.
+      command: /usr/local/bin/forever list
+      register: forever_list
+      changed_when: false
 
-    - name: Ensure Node.js app folder exist.
-      file:
-        path: "{{ node_apps_location }}"
-        state: directory
+    - name: Start example Node.js app.
+      command: "/usr/local/bin/forever start {{ node_apps_location }}/app/app.js"
+      when: "forever_list.stdout.find(node_apps_location + '/app/app.js') == -1"
