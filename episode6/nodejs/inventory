@@ -1,5 +1,5 @@
 [centos]
-172.16.0.2
+172.28.88.166
 
 [centos:vars]
 ansible_user=vagrant

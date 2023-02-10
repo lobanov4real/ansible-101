@@ -7,7 +7,7 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "geerlingguy/centos8"
   config.vm.hostname = "nodejs.test"
-  config.vm.network "private_network", ip: "172.16.0.2"
+  config.vm.network "private_network", ip: "172.28.88.166"
   config.ssh.insert_key = false
   config.vm.synced_folder ".", "/vagrant", disable: true
 
