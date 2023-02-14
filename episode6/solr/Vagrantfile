@@ -4,9 +4,9 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-    config.vm.box = "geerlingguy/centos7"
+    config.vm.box = "geerlingguy/rockylinux7"
     config.vm.hostname = "solr.test"
-    config.vm.network :private_network, ip: "172.28.88.166"
+    config.vm.network :private_network, ip: "172.28.88.167"
     config.ssh.insert_key = false
 
     config.vm.provider :virtualbox do |v|

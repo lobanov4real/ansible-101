@@ -2,6 +2,11 @@
 - hosts: all
   become: yes
 
+  vars:
+    firewal_log_dropped_packets: false
+
   roles:
     - geerlingguy.java
     - geerlingguy.solr
+    - geerlingguy.firewall
+    - geerlingguy.jenkins
