@@ -7,7 +7,7 @@
   tasks:
     - name: Register the output of the 'uptime' command.
       ansible.builtin.command: uptime
-      register: system_uptime # comment
+      register: system_uptime  # comment
       changed_when: true
 
     - name: Print the registered output of the 'uptime' command.
