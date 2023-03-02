@@ -1,13 +1,15 @@
 ---
-- hosts: localhost
+- name: Linting in ansible.
+  hosts: localhost
   gather_facts: false
   connection: local
 
   tasks:
     - name: Register the output of the 'uptime' command.
-      command: uptime
+      ansible.builtin.command: uptime
       register: system_uptime # comment
+      changed_when: true
 
     - name: Print the registered output of the 'uptime' command.
-      debug:
-        var: system_uptime.stdout
+      ansible.builtin.debug:
+        var: system_uptime_stdout
