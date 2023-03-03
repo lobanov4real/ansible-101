@@ -1,2 +1,5 @@
 ---
-# tasks file for myrole
+- name: Install Apache.
+  ansible.builtin.yum:
+    name: httpd
+    state: present
