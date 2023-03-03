@@ -5,7 +5,8 @@
 
   tasks:
     # Syntax check will pass whether or not this file exists.
-    - ansible.builtin.include_tasks: date.yml
+    - name: Check syntax.
+      ansible.builtin.include_tasks: date.yml
 
     # This will cause a failure, since it can be checked statically.
     # - ansible.builtin.import_tasks: free.yml
