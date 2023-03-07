@@ -1,5 +1,0 @@
-{
-    "yaml.schemas": {
-        "https://gitlab.com/appsemble/appsemble/-/raw/HEAD/packages/cli/assets/appsemblerc.schema.json": "file:///d%3A/projects/ansible-101/episode7/02-fail-assert/fail-assert.yml"
-    }
-}
