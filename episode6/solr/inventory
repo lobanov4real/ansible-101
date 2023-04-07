@@ -1,0 +1,6 @@
+[solr-test]
+172.16.0.2
+
+[solr-test:vars]
+ansible_user=vagrant
+ansible_ssh_pass=vagrant
