@@ -1,13 +1,19 @@
-Create a new role with molecule:
+# Create a new role with molecule
 
-``molecule init role myrole``
+```bash
+molecule init role myrole
+```
 
 Then test it:
 
-``molecule test``
+```bash
+molecule test
+```
 
 And test it but leave the container running for debugging:
 
-``molecule converge``
+```bash
+molecule converge
+```
 
 Set a 'breakpiont' using 'fail:' in the tasks.
