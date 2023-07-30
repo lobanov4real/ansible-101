@@ -16,4 +16,4 @@ And test it but leave the container running for debugging:
 molecule converge
 ```
 
-Set a 'breakpiont' using 'fail:' in the tasks.
+Set a 'breakpoint' using 'fail:' in the tasks.
